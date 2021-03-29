@@ -9,6 +9,10 @@
     <com.dexafree.materialList.view.MaterialListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/materialListView"/>
+        android:id="@+id/materialListView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
