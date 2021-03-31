@@ -31,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Characters[] getData() {
-        return null;
+
+        Characters[] characters=new Characters[6];
+
+        return  characters;
     }
 
     private void createCharacter(Characters c) {
