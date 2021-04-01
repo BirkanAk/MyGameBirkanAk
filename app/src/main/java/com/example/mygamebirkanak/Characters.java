@@ -4,6 +4,7 @@ public class Characters {
     private String name,description;
     private int strength,intelligence,agility,crafting,charisma;
     private int image;
+    public boolean selected=false;
 
     public Characters(String name, String description, int strength,int intelligence,int agility,int crafting,int charisma,int image) {
         this.name = name;
