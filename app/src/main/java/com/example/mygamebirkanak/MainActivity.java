@@ -32,23 +32,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void createCharacter(final Characters c) {
-        Card charactercard=new Card.Builder(this).withProvider(new CardProvider()).setLayout(R.layout.material_basic_image_buttons_card_layout).setTitle(c.getName()).setTitleGravity(Gravity.END).setDescription(c.getDescription()+"\n\n"+ "Strength:"+c.getStrength()+"\n"+ "Intelligence:"+c.getIntelligence()+"\n"+ "Agility:"+c.getAgility()+"\n"+ "Crafting:"+c.getCrafting()+"\n"+ "Charisma:"+c.getCharisma()).setDescriptionGravity(Gravity.END).setDrawable(c.getImage()).setDrawableConfiguration(new CardProvider.OnImageConfigListener() {
-            @Override
-            public void onImageConfigure(@NonNull RequestCreator requestCreator) {
-                requestCreator.resize(150,250);
-            }
-        })
-                .addAction(R.id.left_text_button,new TextViewAction(this).setText("Pick "+c.getName()).setTextResourceColor(R.color.orange_button).setListener(new OnActionClickListener() {
-                    @Override
-                    public void onActionClicked(View view, Card card) {
-                        Toast.makeText(getApplicationContext(), "Picked Character: " +c.getName(), Toast.LENGTH_SHORT).show();
-                    }
-                }))
-                .endConfig().build();
-
-        materialListView.getAdapter().add(charactercard);
-    }
 
     private Characters[] getData() {
 
@@ -79,6 +62,23 @@ public class MainActivity extends AppCompatActivity {
         return  characters;
     }
 
+    private void createCharacter(final Characters c) {
+        Card charactercard=new Card.Builder(this).withProvider(new CardProvider()).setLayout(R.layout.material_basic_image_buttons_card_layout).setTitle(c.getName()).setTitleGravity(Gravity.END).setDescription(c.getDescription()+"\n\n"+ "Strength:"+c.getStrength()+"\n"+ "Intelligence:"+c.getIntelligence()+"\n"+ "Agility:"+c.getAgility()+"\n"+ "Crafting:"+c.getCrafting()+"\n"+ "Charisma:"+c.getCharisma()).setDescriptionGravity(Gravity.END).setDrawable(c.getImage()).setDrawableConfiguration(new CardProvider.OnImageConfigListener() {
+            @Override
+            public void onImageConfigure(@NonNull RequestCreator requestCreator) {
+                requestCreator.resize(150,250);
+            }
+        })
+                .addAction(R.id.left_text_button,new TextViewAction(this).setText("Pick "+c.getName()).setTextResourceColor(R.color.orange_button).setListener(new OnActionClickListener() {
+                    @Override
+                    public void onActionClicked(View view, Card card) {
+                        Toast.makeText(getApplicationContext(), "Picked Character: " +c.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                }))
+                .endConfig().build();
+
+        materialListView.getAdapter().add(charactercard);
+    }
 
 
 }
