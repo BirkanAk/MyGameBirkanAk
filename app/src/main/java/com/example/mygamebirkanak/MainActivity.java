@@ -3,6 +3,7 @@ package com.example.mygamebirkanak;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -73,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onActionClicked(View view, Card card) {
                         Toast.makeText(getApplicationContext(), "Picked Character: " +c.getName(), Toast.LENGTH_SHORT).show();
+                        c.selected=true;
+
+                        Intent act_action = new Intent(getApplicationContext(),Fight.class);
+                        startActivity(act_action);
                     }
                 }))
                 .endConfig().build();
