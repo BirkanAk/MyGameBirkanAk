@@ -15,7 +15,6 @@ public class Characters {
         this.crafting=crafting;
         this.charisma=charisma;
         this.image = image;
-
     }
 
     public String getName() {
@@ -49,4 +48,5 @@ public class Characters {
     public int getImage() {
         return image;
     }
+
 }
