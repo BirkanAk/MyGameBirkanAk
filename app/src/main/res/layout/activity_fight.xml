@@ -7,39 +7,97 @@
     tools:context=".Fight"
     android:background="@drawable/splashscreen">
 
-
-    <com.dexafree.materialList.view.MaterialListView
-        android:id="@+id/fightMaterialListViewPicked"
-        android:layout_width="414dp"
-        android:layout_height="302dp"
+    <RadioGroup
+        android:id="@+id/groupradio"
+        android:layout_width="180dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.74">
 
-    <com.dexafree.materialList.view.MaterialListView
-        android:id="@+id/fightMaterialListViewEnemy"
-        android:layout_width="414dp"
-        android:layout_height="241dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.967" />
+        <!-- In RadioGroup create the 1 Radio Button-->
+        <!-- like this we will add some more Radio Button-->
+        <RadioButton
+            android:id="@+id/strengthradio"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:text="Strength: "
+            android:textColor="#E6D3D3"
+            android:textColorLink="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/intradio"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:text="Intelligence: "
+            android:textColor="#E6D3D3"
+            android:textColorLink="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/agiradio"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:text="Agility: "
+            android:textColor="#E6D3D3"
+            android:textColorLink="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/craftradio"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:text="Crafting: "
+            android:textColor="#E6D3D3"
+            android:textColorLink="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/charismaradio"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:text="Charisma: "
+            android:textColor="#E6D3D3"
+            android:textColorLink="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RadioGroup>
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="166dp"
-        android:layout_height="128dp"
+        android:id="@+id/versus"
+        android:layout_width="98dp"
+        android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532"
+        app:layout_constraintVertical_bias="0.3"
         app:srcCompat="@drawable/vs" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
