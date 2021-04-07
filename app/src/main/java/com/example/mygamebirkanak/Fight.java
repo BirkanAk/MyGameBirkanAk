@@ -8,20 +8,33 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 
 public class Fight extends AppCompatActivity {
-    ImageView selected;
-    ImageView enemy;
+    ImageView selectedPortrait;
+    ImageView enemyPortrait;
+    RadioButton strengthradio;
+    RadioButton intradio;
+    RadioButton agilityradio;
+    RadioButton craftradio;
+    RadioButton charismaradio;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight);
 
-        /*selected= (ImageView) findViewById(R.id.);
-        enemy=(ImageView) findViewById(R.id.);*/
+        selectedPortrait= (ImageView) findViewById(R.id.pickedPortrait);
+        enemyPortrait=(ImageView) findViewById(R.id.enemyPortrait);
+
+        strengthradio=(RadioButton) findViewById(R.id.strengthradio);
+        intradio=(RadioButton) findViewById(R.id.intradio);
+        agilityradio=(RadioButton) findViewById(R.id.agiradio);
+        craftradio=(RadioButton) findViewById(R.id.craftradio);
+        charismaradio=(RadioButton) findViewById(R.id.charismaradio);
 
         this.loadCharacters();
     }
@@ -29,7 +42,15 @@ public class Fight extends AppCompatActivity {
     private void loadCharacters() {
         for (Characters c:getData()){
             if(c.selected==true){
+                selectedPortrait.setImageResource(c.getImage());
+                strengthradio.setText("Strength: "+c.getStrength());
+                intradio.setText("Intelligence: "+c.getIntelligence());
+                agilityradio.setText("Agility: "+c.getAgility());
+                craftradio.setText("Crafting: "+c.getCrafting());
+                charismaradio.setText("Charisma: "+c.getCharisma());
 
+                Characters enemy = CharactersArray.characters[2];
+                enemyPortrait.setImageResource(enemy.getImage());
             }
         }
     }
