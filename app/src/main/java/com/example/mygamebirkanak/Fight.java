@@ -3,6 +3,8 @@ package com.example.mygamebirkanak;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -99,66 +101,69 @@ public class Fight extends AppCompatActivity {
         if(strengthradio.isChecked())
         {
             if(selectedCharacter.getStrength()>enemyCharacter.getStrength()){
-                Toast.makeText(getApplicationContext(), "You win", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                dialogAlert(true,selectedCharacter.getStrength(),enemyCharacter.getStrength(),"Strength");
                 selectedCharacter.strCounter+=1;
 
             }
             else{
-                Toast.makeText(getApplicationContext(), "You lost", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(getApplicationContext(), "You lost!", Toast.LENGTH_SHORT).show();
+                dialogAlert(false,selectedCharacter.getStrength(),enemyCharacter.getStrength(),"Strength");
             }
-            refresh();
         }
         else if (intradio.isChecked())
         {
             if(selectedCharacter.getIntelligence()>enemyCharacter.getIntelligence()){
-                Toast.makeText(getApplicationContext(), "You win", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                dialogAlert(true,selectedCharacter.getIntelligence(),enemyCharacter.getIntelligence(),"Intelligence");
                 selectedCharacter.intCounter+=1;
             }
             else{
-                Toast.makeText(getApplicationContext(), "You lost", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You lost!", Toast.LENGTH_SHORT).show();
+                dialogAlert(false,selectedCharacter.getIntelligence(),enemyCharacter.getIntelligence(),"Intelligence");
 
             }
-            refresh();
         }
 
         else if (agilityradio.isChecked())
         {
             if(selectedCharacter.getAgility()>enemyCharacter.getAgility()){
-                Toast.makeText(getApplicationContext(), "You win", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                dialogAlert(true,selectedCharacter.getAgility(),enemyCharacter.getAgility(),"Agility");
                 selectedCharacter.agiCounter+=1;
             }
             else{
-                Toast.makeText(getApplicationContext(), "You lost", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(getApplicationContext(), "You lost!", Toast.LENGTH_SHORT).show();
+                dialogAlert(false,selectedCharacter.getAgility(),enemyCharacter.getAgility(),"Agility");
             }
-            refresh();
         }
 
         else if (craftradio.isChecked())
         {
             if(selectedCharacter.getCrafting()>enemyCharacter.getCrafting()){
-                Toast.makeText(getApplicationContext(), "You win", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                dialogAlert(true,selectedCharacter.getCrafting(),enemyCharacter.getCrafting(),"Crafting");
                 selectedCharacter.craftingCounter+=1;
             }
             else{
-                Toast.makeText(getApplicationContext(), "You lost", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(getApplicationContext(), "You lost!", Toast.LENGTH_SHORT).show();
+                dialogAlert(false,selectedCharacter.getCrafting(),enemyCharacter.getCrafting(),"Crafting");
             }
-            refresh();
         }
 
         else if (charismaradio.isChecked())
         {
             if(selectedCharacter.getCharisma()>enemyCharacter.getCharisma()){
-                Toast.makeText(getApplicationContext(), "You win", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                dialogAlert(true,selectedCharacter.getCharisma(),enemyCharacter.getCharisma(),"Charisma");
                 selectedCharacter.charismaCounter+=1;
             }
             else{
-                Toast.makeText(getApplicationContext(), "You lost", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You lost!", Toast.LENGTH_SHORT).show();
+                dialogAlert(false,selectedCharacter.getCharisma(),enemyCharacter.getCharisma(),"Charisma");
 
             }
-            refresh();
+
         }
     }
 
@@ -171,5 +176,30 @@ public class Fight extends AppCompatActivity {
     public void onChangeCharacter(View view) {
         Intent act_action = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(act_action);
+    }
+    private void dialogAlert(boolean win,int x,int y,String stat){
+
+        AlertDialog postFightDialog = new AlertDialog.Builder(Fight.this).create();
+        if(win==true){
+            postFightDialog.setTitle("You won! Match Summary");
+            postFightDialog.setMessage("Your Vala was: "+selectedCharacter.getName()+"\nYour "+stat+" was: "+x+"\n\nYour enemy was:"+enemyCharacter.getName()+"\nIts "+stat+"was: "+y+"\n\nYour Vala got tired and its "+stat+" got decreased by 5.");
+        }
+        else{
+
+            postFightDialog.setTitle("You lost... Match Summary");
+            postFightDialog.setMessage("Your Vala was: "+selectedCharacter.getName()+"\nYour "+stat+" was: "+x+"\n\nYour enemy was:"+enemyCharacter.getName()+"\nIts "+stat+"was: "+y+"\n\nYour Vala couldn't win so its stat didn't change.");
+
+
+
+        }
+        postFightDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Fight another Vala!",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        refresh();
+                    }
+                });
+        postFightDialog.show();
+
     }
 }
