@@ -4,12 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import java.util.Random;
 
 
 public class Fight extends AppCompatActivity {
@@ -20,6 +24,10 @@ public class Fight extends AppCompatActivity {
     RadioButton agilityradio;
     RadioButton craftradio;
     RadioButton charismaradio;
+    Button fightButton;
+
+    Characters selectedCharacter;
+    Characters enemyCharacter;
 
 
     @Override
@@ -36,12 +44,16 @@ public class Fight extends AppCompatActivity {
         craftradio=(RadioButton) findViewById(R.id.craftradio);
         charismaradio=(RadioButton) findViewById(R.id.charismaradio);
 
+        fightButton=(Button) findViewById(R.id.fightButton);
+        fightButton.setBackgroundColor(Color.parseColor("#DB3436"));
+
         this.loadCharacters();
     }
 
     private void loadCharacters() {
         for (Characters c:getData()){
             if(c.selected==true){
+                selectedCharacter=c;
                 selectedPortrait.setImageResource(c.getImage());
                 strengthradio.setText("Strength: "+c.getStrength());
                 intradio.setText("Intelligence: "+c.getIntelligence());
@@ -49,8 +61,10 @@ public class Fight extends AppCompatActivity {
                 craftradio.setText("Crafting: "+c.getCrafting());
                 charismaradio.setText("Charisma: "+c.getCharisma());
 
-                Characters enemy = CharactersArray.characters[2];
-                enemyPortrait.setImageResource(enemy.getImage());
+                Random ran = new Random();
+                int randomCharacter = ran.nextInt(CharactersArray.characters.length);
+                enemyCharacter = CharactersArray.characters[randomCharacter];
+                enemyPortrait.setImageResource(enemyCharacter.getImage());
             }
         }
     }
@@ -58,5 +72,31 @@ public class Fight extends AppCompatActivity {
     private Characters[] getData() {
         CharactersArray.getInstance();
         return CharactersArray.characters;
+    }
+
+    public void onFight(View view) {
+        if(strengthradio.isChecked())
+        {
+            Toast.makeText(getApplicationContext(), "STR", Toast.LENGTH_SHORT).show();
+        }
+        else if (intradio.isChecked())
+        {
+            Toast.makeText(getApplicationContext(), "INT", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (agilityradio.isChecked())
+        {
+            Toast.makeText(getApplicationContext(), "Agility", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (craftradio.isChecked())
+        {
+            Toast.makeText(getApplicationContext(), "Craft", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (charismaradio.isChecked())
+        {
+            Toast.makeText(getApplicationContext(), "Charisma", Toast.LENGTH_SHORT).show();
+        }
     }
 }
