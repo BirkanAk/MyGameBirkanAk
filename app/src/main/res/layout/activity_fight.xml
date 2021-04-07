@@ -7,6 +7,19 @@
     tools:context=".Fight"
     android:background="@drawable/splashscreen">
 
+    <Button
+        android:id="@+id/changeCharacter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onChangeCharacter"
+        android:text="Change Character"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <RadioGroup
         android:id="@+id/groupradio"
         android:layout_width="180dp"
@@ -18,7 +31,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.60">
+        app:layout_constraintVertical_bias="0.66">
 
         <!-- In RadioGroup create the 1 Radio Button-->
         <!-- like this we will add some more Radio Button-->
@@ -109,8 +122,7 @@
         app:layout_constraintHorizontal_bias="0.97"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:srcCompat="@drawable/tulkas" />
+        app:layout_constraintVertical_bias="0.1"/>
 
     <ImageView
         android:id="@+id/pickedPortrait"
@@ -121,8 +133,7 @@
         app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:srcCompat="@drawable/tulkas" />
+        app:layout_constraintVertical_bias="0.1" />
 
     <Button
         android:id="@+id/fightButton"
@@ -136,5 +147,70 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/selectedName"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textColor="#DCD2D2"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.360" />
+
+    <TextView
+        android:id="@+id/selectedDesc"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textColor="#DCD2D2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.450" />
+
+    <TextView
+        android:id="@+id/enemyName"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textColor="#DCD2D2"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.939"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.360" />
+
+    <TextView
+        android:id="@+id/enemyDesc"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textColor="#DCD2D2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.450" />
+
+    <TextView
+        android:id="@+id/guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#DCD59F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:gravity="fill_vertical"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

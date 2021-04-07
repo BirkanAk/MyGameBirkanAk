@@ -23,11 +23,12 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="304dp"
-        android:layout_height="205dp"
-        android:text="Hello Challanger! Welcome to my game, Competition of the Valar! First off, you will pick a Vala, the angelic/godly beings of the Lord of the Rings universe! These characters, the Valar, have 5 different attributes in my game. You will have to pick one, and compete with other Valar, with the attribute of your picking! If you have higher value for the selected attribute, you get a point! Remember not to spam the strongest attribute in the game, since your character will tire out and the stat will decrease by a set amount!"
+        android:layout_height="240dp"
+        android:text="Hello Challanger! Welcome to my game, Competition of the Valar! First off, you will pick a Vala, the angelic/godly beings of the Lord of the Rings universe! These characters, the Valar, have 5 different attributes in my game. You will have to pick one, and compete with a random Vala, with the attribute of your picking! But remember, you cannot see your enemy's attributes! If you have higher value for the selected attribute, you get a point! Remember not to spam the strongest attribute in the game, since your character will tire out and the stat will decrease by a set amount!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintVertical_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
