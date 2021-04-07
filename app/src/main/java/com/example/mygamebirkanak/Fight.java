@@ -182,15 +182,11 @@ public class Fight extends AppCompatActivity {
         AlertDialog postFightDialog = new AlertDialog.Builder(Fight.this).create();
         if(win==true){
             postFightDialog.setTitle("You won! Match Summary");
-            postFightDialog.setMessage("Your Vala was: "+selectedCharacter.getName()+"\nYour "+stat+" was: "+x+"\n\nYour enemy was:"+enemyCharacter.getName()+"\nIts "+stat+"was: "+y+"\n\nYour Vala got tired and its "+stat+" got decreased by 5.");
+            postFightDialog.setMessage("Your Vala was: "+selectedCharacter.getName()+"\nYour "+stat+" was: "+x+"\n\nYour enemy was:"+enemyCharacter.getName()+"\nIts "+stat+" was: "+y+"\n\nYour Vala got tired and its "+stat+" got decreased by 5.");
         }
         else{
-
             postFightDialog.setTitle("You lost... Match Summary");
-            postFightDialog.setMessage("Your Vala was: "+selectedCharacter.getName()+"\nYour "+stat+" was: "+x+"\n\nYour enemy was:"+enemyCharacter.getName()+"\nIts "+stat+"was: "+y+"\n\nYour Vala couldn't win so its stat didn't change.");
-
-
-
+            postFightDialog.setMessage("Your Vala was: "+selectedCharacter.getName()+"\nYour "+stat+" was: "+x+"\n\nYour enemy was:"+enemyCharacter.getName()+"\nIts "+stat+" was: "+y+"\n\nYour Vala couldn't win so its stat didn't change.");
         }
         postFightDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Fight another Vala!",
                 new DialogInterface.OnClickListener() {
