@@ -2,7 +2,9 @@ package com.example.mygamebirkanak;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ public class SplashScreen extends AppCompatActivity {
     Button playbutton;
     Button instructionsbutton;
     TextView highscoresplash;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,11 @@ public class SplashScreen extends AppCompatActivity {
         playbutton.setBackgroundColor(Color.parseColor("#529930"));
         instructionsbutton.setBackgroundColor(Color.parseColor("#1F4775"));
 
-        highscoresplash.setText("HIGHSCORE:");
+        Score.getInstance();
+        SharedPreferences prefs = getSharedPreferences("myPrefsKey", MODE_PRIVATE);
+        Score.highscore = prefs.getInt("Highscore", 0);
+        highscoresplash.setText("Highscore: "+Score.highscore);
+
 
 
     }

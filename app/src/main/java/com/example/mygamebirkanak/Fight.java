@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -29,11 +31,10 @@ public class Fight extends AppCompatActivity {
     RadioButton charismaradio;
     Button fightButton;
     Button changeCharacterButton;
-    TextView selectedName,selectedDesc,enemyName,enemyDesc,guide;
+    TextView selectedName,selectedDesc,enemyName,enemyDesc,guide,scoreText,highscoreFight;
 
     Characters selectedCharacter;
     Characters enemyCharacter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,8 @@ public class Fight extends AppCompatActivity {
         enemyDesc=(TextView) findViewById(R.id.enemyDesc);
         enemyName=(TextView) findViewById(R.id.enemyName);
         guide=(TextView)findViewById(R.id.guide);
+        scoreText=(TextView)findViewById(R.id.scoreText);
+        highscoreFight=(TextView)findViewById(R.id.highscoreFight);
 
         this.loadCharacters();
     }
@@ -76,6 +79,11 @@ public class Fight extends AppCompatActivity {
                 selectedName.setText(c.getName());
                 selectedDesc.setText(c.getDescription());
 
+                scoreText.setText("Score: "+Score.point);
+                Score.getInstance();
+                SharedPreferences prefs = getSharedPreferences("myPrefsKey", MODE_PRIVATE);
+                Score.highscore = prefs.getInt("Highscore", 0);
+                highscoreFight.setText("Highscore: "+Score.highscore);
 
                 Random ran = new Random();
                 int randomCharacter = ran.nextInt(CharactersArray.characters.length);
@@ -98,12 +106,24 @@ public class Fight extends AppCompatActivity {
     }
 
     public void onFight(View view) {
+        Score.getInstance();
         if(strengthradio.isChecked())
         {
             if(selectedCharacter.getStrength()>enemyCharacter.getStrength()){
                 Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                Score.point+=1;
                 dialogAlert(true,selectedCharacter.getStrength(),enemyCharacter.getStrength(),"Strength");
                 selectedCharacter.strCounter+=1;
+
+                if (Score.point>Score.highscore){
+                    Score.highscore=Score.point;
+                    SharedPreferences prefs = getSharedPreferences("myPrefsKey", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("Highscore", Score.highscore);
+                    editor.commit();
+                }
+
+
 
             }
             else{
@@ -115,8 +135,17 @@ public class Fight extends AppCompatActivity {
         {
             if(selectedCharacter.getIntelligence()>enemyCharacter.getIntelligence()){
                 Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                Score.point+=1;
                 dialogAlert(true,selectedCharacter.getIntelligence(),enemyCharacter.getIntelligence(),"Intelligence");
                 selectedCharacter.intCounter+=1;
+
+                if (Score.point>Score.highscore){
+                    Score.highscore=Score.point;
+                    SharedPreferences prefs = getSharedPreferences("myPrefsKey", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("Highscore", Score.highscore);
+                    editor.commit();
+                }
             }
             else{
                 Toast.makeText(getApplicationContext(), "You lost!", Toast.LENGTH_SHORT).show();
@@ -129,8 +158,17 @@ public class Fight extends AppCompatActivity {
         {
             if(selectedCharacter.getAgility()>enemyCharacter.getAgility()){
                 Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                Score.point+=1;
                 dialogAlert(true,selectedCharacter.getAgility(),enemyCharacter.getAgility(),"Agility");
                 selectedCharacter.agiCounter+=1;
+
+                if (Score.point>Score.highscore){
+                    Score.highscore=Score.point;
+                    SharedPreferences prefs = getSharedPreferences("myPrefsKey", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("Highscore", Score.highscore);
+                    editor.commit();
+                }
             }
             else{
                 Toast.makeText(getApplicationContext(), "You lost!", Toast.LENGTH_SHORT).show();
@@ -142,8 +180,17 @@ public class Fight extends AppCompatActivity {
         {
             if(selectedCharacter.getCrafting()>enemyCharacter.getCrafting()){
                 Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                Score.point+=1;
                 dialogAlert(true,selectedCharacter.getCrafting(),enemyCharacter.getCrafting(),"Crafting");
                 selectedCharacter.craftingCounter+=1;
+
+                if (Score.point>Score.highscore){
+                    Score.highscore=Score.point;
+                    SharedPreferences prefs = getSharedPreferences("myPrefsKey", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("Highscore", Score.highscore);
+                    editor.commit();
+                }
             }
             else{
                 Toast.makeText(getApplicationContext(), "You lost!", Toast.LENGTH_SHORT).show();
@@ -155,8 +202,17 @@ public class Fight extends AppCompatActivity {
         {
             if(selectedCharacter.getCharisma()>enemyCharacter.getCharisma()){
                 Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                Score.point+=1;
                 dialogAlert(true,selectedCharacter.getCharisma(),enemyCharacter.getCharisma(),"Charisma");
                 selectedCharacter.charismaCounter+=1;
+
+                if (Score.point>Score.highscore){
+                    Score.highscore=Score.point;
+                    SharedPreferences prefs = getSharedPreferences("myPrefsKey", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("Highscore", Score.highscore);
+                    editor.commit();
+                }
             }
             else{
                 Toast.makeText(getApplicationContext(), "You lost!", Toast.LENGTH_SHORT).show();
@@ -182,7 +238,7 @@ public class Fight extends AppCompatActivity {
         AlertDialog postFightDialog = new AlertDialog.Builder(Fight.this).create();
         if(win==true){
             postFightDialog.setTitle("You won! Match Summary");
-            postFightDialog.setMessage("Your Vala was: "+selectedCharacter.getName()+"\nYour "+stat+" was: "+x+"\n\nYour enemy was:"+enemyCharacter.getName()+"\nIts "+stat+" was: "+y+"\n\nYour Vala got tired and its "+stat+" got decreased by 5.");
+            postFightDialog.setMessage("Your Vala was: "+selectedCharacter.getName()+"\nYour "+stat+" was: "+x+"\n\nYour enemy was:"+enemyCharacter.getName()+"\nIts "+stat+" was: "+y+"\n\nYour Vala got tired and its "+stat+" got decreased by 5. But you've gained a point!");
         }
         else{
             postFightDialog.setTitle("You lost... Match Summary");
