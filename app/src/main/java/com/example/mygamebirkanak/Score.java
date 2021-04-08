@@ -1,8 +1,6 @@
 package com.example.mygamebirkanak;
 
-import android.app.Activity;
-
-public class Score extends Activity {
+public class Score{
     private static Score SCORE=null;
     public static int point =0;
     public static int highscore=0;
